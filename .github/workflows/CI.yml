@@ -28,4 +28,4 @@ jobs:
       run: docker ps
     
     - name: Terminate Docker image
-      run: docker container stop $(docker ps -a -q --filter ancestor=<test-server> --format="{{.ID}}")
+      run: docker container stop $(docker ps --filter ancestor=test-server --format="{{.Names}}")
