@@ -22,7 +22,7 @@ jobs:
       run: docker build . --file Dockerfile -t test-server --tag my-image-name:$(date +%s)
     
     - name: Run Docker image
-      run: ID=$(docker run -d -p 3333:3333 -ti test-server -F -p 3333)
+      run: docker run -d -p 3333:3333 -ti test-server -F -p 3333
     
     - name: Terminate Docker image
-      run: docker container stop $ID
+      run: docker container stop $(docker ps -a -q --filter ancestor=<image-name> --format="{{.ID}}"))
