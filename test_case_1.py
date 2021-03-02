@@ -13,7 +13,7 @@ class Test(unittest.TestCase):
         self.s.send(b'put key=2\0')
         data = self.s.recv(1024)
         data_str_1 = str(data)
-        self.assertEqual('OK',data_str_1[4:5], "OKE")
+        self.assertEqual('OK',data_str_1[4:6], "OKE")
         
     def test_get(self):
         self.s.send(b'count\0')
