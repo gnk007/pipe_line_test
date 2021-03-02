@@ -1,0 +1,28 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ Main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    
+    - name: Build the Docker image
+    - run: docker build . --file Dockerfile -t test-server --tag my-image-name:$(date +%s)
+    
+    - name: Run Docker image
+    - run: ID=$(docker run -d -p 3333:3333 -ti test-server -F -p 3333)
+    
+    - name: Terminate Docker image
+    - run: docker container stop $ID
