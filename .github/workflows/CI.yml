@@ -25,4 +25,4 @@ jobs:
       run: docker run -d -p 3333:3333 -ti test-server -F -p 3333
     
     - name: Terminate Docker image
-      run: docker container stop $(docker ps -a -q --filter ancestor=<image-name> --format="{{.ID}}"))
+      run: docker container stop $(docker ps -a -q --filter ancestor=<image-name> --format="{{.ID}}")
