@@ -6,9 +6,8 @@ class Test(unittest.TestCase):
 
     def setUp(self) -> None:
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        # host = "192.168.56.111"
         host = socket.gethostname()
-        port = 3333  # The same port as used by the server
+        port = 3333
         self.s.connect((host, port))
         self.s.send(b'put key=2\0')
         data = self.s.recv(1024)
