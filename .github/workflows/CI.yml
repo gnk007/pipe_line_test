@@ -28,7 +28,7 @@ jobs:
       run: docker ps
       
     - name: Execute test cases
-      run: python -m unittest -v test_case_1
+      run: python -m unittest -v base_function_negative_response_test base_function_positive_response_test creative_test_for_put_function creative_test_for_put_function_2
     
     - name: Terminate Docker image
       run: docker container stop $(docker ps --filter ancestor=test-server --format="{{.Names}}")
